@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+
+
+namespace ConsoleApp3
+{
+    class Program
+    {
+        static void countFreq(int[] arr, int n)
+        {
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+
+            // Traverse through array elements and count frequencies
+ 
+            for (int i = 0; i < n; i++)
+            {
+                if (dic.ContainsKey(arr[i]))
+                {
+                    var val = dic[arr[i]];
+                    dic.Remove(arr[i]);
+                    dic.Add(arr[i], val + 1);
+                }
+                else
+                {
+                    dic.Add(arr[i], 1);
+                }
+            }
+
+            // Traverse through map and print frequencies 
+            foreach (KeyValuePair<int, int> entry in dic)
+            {
+                Console.WriteLine(entry.Key + " " + entry.Value);
+            }
+        }
+
+        // Insert Data
+        public static void Main(String[] args)
+        {
+            int[] arr = { 1, 2, 3, 2, 3, 3, 4, 5, 6, 5, 6, 6 };
+            int n = arr.Length;
+            countFreq(arr, n);
+            Console.ReadLine();
+        }
+        
+    }
+}
+
