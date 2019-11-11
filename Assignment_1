@@ -1,0 +1,79 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    using System;
+
+
+    public class Class1
+    {
+
+        static void Main()
+        {
+            int[] arr = new int[100]; ;
+            int i, f, k, size, isUnique;
+
+            //Reads size of the array
+            Console.WriteLine("Enter size of the array: ");
+            size = Convert.ToInt16(Console.ReadLine());
+
+            //Reads elements in array
+            Console.WriteLine("Enter elements in the array: ");
+            for (i = 0; i < size; i++)
+            {
+                arr[i] = Convert.ToInt16(Console.ReadLine());
+            }
+
+            //Removing duplicate elements from given array
+            for (i = 0; i < size; i++)
+            {
+                isUnique = 1;
+
+                for (f = i + 1; f < size; f++)
+                {
+
+                    //If any duplicate element is found
+
+                    if (arr[i] == arr[f])
+                    {
+                        // Removing duplicate element
+                        for (k = f; k < size - 1; k++)
+                        {
+                            arr[k] = arr[k + 1];
+                        }
+
+                        size--;
+                        f--;
+                        isUnique = 0;
+                    }
+                }
+
+                // If array element is not unique then also remove the current element
+
+                if (isUnique != 1)
+                {
+                    for (f = i; f < size - 1; f++)
+                    {
+                        arr[f] = arr[f + 1];
+                    }
+
+                    size--;
+                    i--;
+                }
+            }
+
+            //Printing all unique elements in array
+            Console.WriteLine("All unique elements in the array are: ");
+            for (i = 0; i < size; i++)
+            {
+                Console.WriteLine(arr[i] + "\t");
+            }
+            Console.ReadLine();
+        }
+    }
+
+}
